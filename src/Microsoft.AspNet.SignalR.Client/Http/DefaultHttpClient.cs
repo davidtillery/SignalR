@@ -40,7 +40,9 @@ namespace Microsoft.AspNet.SignalR.Client.Http
         {
             return HttpHelper.GetAsync(url, request =>
             {
+#if !NET_STANDARD
                 request.ConnectionGroupName = isLongRunning ? _longRunningGroup : _shortRunningGroup;
+#endif
 
                 var req = new HttpWebRequestWrapper(request);
                 prepareRequest(req);
@@ -61,8 +63,9 @@ namespace Microsoft.AspNet.SignalR.Client.Http
         {
             return HttpHelper.PostAsync(url, request =>
             {
+#if !NET_STANDARD
                 request.ConnectionGroupName = isLongRunning ? _longRunningGroup : _shortRunningGroup;
-
+#endif
                 var req = new HttpWebRequestWrapper(request);
                 prepareRequest(req);
                 PrepareClientRequest(req);

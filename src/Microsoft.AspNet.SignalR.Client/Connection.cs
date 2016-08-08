@@ -920,6 +920,8 @@ namespace Microsoft.AspNet.SignalR.Client
             request.UserAgent = CreateUserAgentString("SignalR.Client.WinUAP");
 #elif WINDOWS_APP
             request.UserAgent = CreateUserAgentString("SignalR.Client.Win8UniversalApp");
+#elif NET_STANDARD
+            request.UserAgent = CreateUserAgentString("SignalR.Client.NETCore");
 #elif NET45
             request.UserAgent = CreateUserAgentString("SignalR.Client.NET45");
 #else
@@ -940,8 +942,10 @@ namespace Microsoft.AspNet.SignalR.Client
 #endif
             }
 
-#if NETFX_CORE || PORTABLE
+#if (NETFX_CORE || PORTABLE) && !NET_STANDARD
             return String.Format(CultureInfo.InvariantCulture, "{0}/{1} ({2})", client, _assemblyVersion, "Unknown OS");
+#elif NET_STANDARD
+            return String.Format(CultureInfo.InvariantCulture, "{0}/{1} ({2})", client, _assemblyVersion, System.Runtime.InteropServices.RuntimeInformation.OSDescription);
 #else
             return String.Format(CultureInfo.InvariantCulture, "{0}/{1} ({2})", client, _assemblyVersion, Environment.OSVersion);
 #endif

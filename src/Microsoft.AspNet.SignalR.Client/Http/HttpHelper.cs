@@ -15,7 +15,7 @@ namespace Microsoft.AspNet.SignalR.Client.Http
 {
     internal static class HttpHelper
     {
-#if CLIENT_NET4
+#if CLIENT_NET4 || NET_STANDARD
 
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "Exceptions are flowed back to the caller.")]
         public static Task<HttpWebResponse> GetHttpResponseAsync(this HttpWebRequest request)
@@ -67,8 +67,12 @@ namespace Microsoft.AspNet.SignalR.Client.Http
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
 
+#if NET_STANDARD
+            request.Headers[HttpRequestHeader.ContentLength] = String.Empty + (buffer != null ? buffer.Length : 0);        
+#else
             // Set the content length if the buffer is non-null
             request.ContentLength = buffer != null ? buffer.LongLength : 0;
+#endif
 
             if (buffer == null)
             {

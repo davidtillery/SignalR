@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
 
-#if NETFX_CORE
+#if NETFX_CORE && !NET_STANDARD
 using Windows.System.Threading;
 #endif
 
@@ -14,7 +14,7 @@ namespace Microsoft.AspNet.SignalR.Client.Infrastructure
 {
     internal sealed class TaskQueueMonitor : ITaskMonitor, IDisposable
     {
-#if !NETFX_CORE
+#if !NETFX_CORE || NET_STANDARD
         private Timer _timer;
 #else
         private ThreadPoolTimer _timer;
@@ -37,7 +37,7 @@ namespace Microsoft.AspNet.SignalR.Client.Infrastructure
             _connection = connection;
             _deadlockErrorTimeout = deadlockErrorTimeout;
 
-#if !NETFX_CORE
+#if !NETFX_CORE || NET_STANDARD
             _timer = new Timer(_ => Beat(), state: null, dueTime: deadlockErrorTimeout, period: deadlockErrorTimeout);
 #else
             _timer = ThreadPoolTimer.CreatePeriodicTimer(_ => Beat(), period: deadlockErrorTimeout);
@@ -95,7 +95,7 @@ namespace Microsoft.AspNet.SignalR.Client.Infrastructure
 
             if (timer != null)
             {
-#if !NETFX_CORE
+#if !NETFX_CORE || NET_STANDARD
                 timer.Dispose();
 #else
                 timer.Cancel();

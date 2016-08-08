@@ -84,8 +84,23 @@ namespace Microsoft.AspNet.SignalR.Client
         private static SignalRError GetHttpClientException(Exception ex)
         {
             var error = new SignalRError(ex);
-            var hex = ex as HttpClientException;
+#if NET_STANDARD
+            var hex = ex as WebException;
 
+            if (hex != null && hex.Response != null)
+            {
+                var response = hex.Response as HttpWebResponse;
+
+                if (response != null)
+                {
+                    error.SetResponse(response);
+                    error.StatusCode = response.StatusCode;
+                    error.ResponseBody = new StreamReader(response.GetResponseStream()).ReadToEnd();
+                }
+            }
+
+#else
+            var hex = ex as HttpClientException;
             if (hex != null && hex.Response != null)
             {
                 var response = hex.Response as HttpResponseMessage;
@@ -97,7 +112,7 @@ namespace Microsoft.AspNet.SignalR.Client
                     error.ResponseBody = response.Content.ReadAsStringAsync().Result;
                 }
             }
-
+#endif
             return error;
         }
 #endif
