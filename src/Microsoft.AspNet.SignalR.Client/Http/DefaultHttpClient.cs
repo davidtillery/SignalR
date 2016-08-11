@@ -12,16 +12,19 @@ namespace Microsoft.AspNet.SignalR.Client.Http
     /// </summary>
     public class DefaultHttpClient : IHttpClient
     {
+#if !NET_STANDARD
         private readonly string _shortRunningGroup;
         private readonly string _longRunningGroup;
-
+#endif
         private IConnection _connection;
 
         public DefaultHttpClient()
         {
+#if !NET_STANDARD
             string id = Guid.NewGuid().ToString();
             _shortRunningGroup = "SignalR-short-running-" + id;
             _longRunningGroup = "SignalR-long-running-" + id;
+#endif
         }
 
         public void Initialize(IConnection connection)

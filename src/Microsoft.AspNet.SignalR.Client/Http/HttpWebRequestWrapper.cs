@@ -152,9 +152,9 @@ namespace Microsoft.AspNet.SignalR.Client.Http
             }
         }
 
+#if !NET_STANDARD
         public void AddClientCerts(X509CertificateCollection certificates)
         {
-#if !NET_STANDARD
             if (certificates == null)
             {
                 throw new ArgumentNullException("certificates");
@@ -165,9 +165,7 @@ namespace Microsoft.AspNet.SignalR.Client.Http
             {
                 _request.ClientCertificates = certificates;
             }
-#else
-            throw new NotImplementedException();
-#endif
         }
+#endif
     }
 }
