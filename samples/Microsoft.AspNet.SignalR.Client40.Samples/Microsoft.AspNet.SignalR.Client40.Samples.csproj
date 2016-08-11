@@ -48,9 +48,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Microsoft.AspNet.SignalR.Client\Microsoft.AspNet.SignalR.Client.csproj">
-      <Project>{EB46B9C6-EE37-48F9-835E-E49580E40E0A}</Project>
-      <Name>Microsoft.AspNet.SignalR.Client</Name>
+    <ProjectReference Include="..\..\src\Microsoft.AspNet.SignalR.Client40\Microsoft.AspNet.SignalR.Client40.csproj">
+      <Project>{eb17bc7d-bce4-44a8-9a83-07498de772e0}</Project>
+      <Name>Microsoft.AspNet.SignalR.Client40</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
