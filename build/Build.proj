@@ -102,7 +102,7 @@
       <Platform>netcore50</Platform>
     </Projects>
     <!-- The SignalR .NET client is the only remaining project that targets .NET 4.0 starting in SignalR 2.0 -->
-    <Projects Include="$(ProjectRoot)\src\Microsoft.AspNet.SignalR.Client\Microsoft.AspNet.SignalR.Client.csproj">
+    <Projects Include="$(ProjectRoot)\src\Microsoft.AspNet.SignalR.Client40\Microsoft.AspNet.SignalR.Client40.csproj">
       <Platform>Net40</Platform>
     </Projects>
     <!-- This is for legacy SignalR -->
@@ -120,6 +120,12 @@
       <RunFxCop>false</RunFxCop>
       <!-- InternalsVisibleTo("Microsoft.AspNet.SignalR.Tests.Common, PublicKey=...") is broken in the wsr-teamcity build and Stress depends on Tests.Common -->
       <Build Condition="'$(KeyFile)' != ''">false</Build>
+    </Projects>
+    
+    <Projects Include="$(ProjectRoot)\src\Microsoft.AspNet.SignalR.Client\Microsoft.AspNet.SignalR.Client.xproj">
+      <BuildProperties>OutputPath=$(ProjectArtifactsDir)</BuildProperties>
+      <Platform>dnxcore50</Platform>
+      <CopyArtifacts>true</CopyArtifacts>
     </Projects>
 
     <!-- Add any src projects that have not been defined manually -->
@@ -390,9 +396,17 @@
       <JavaScript Include="$(ProjectArtifactsDir)\Microsoft.AspNet.SignalR.Client.JS\jquery.signalR.min.js">
         <VersionedFileName>jquery.signalR-$(PackageVersion).min.js</VersionedFileName>
       </JavaScript>
+      
+      <!-- Copy Client artifacts to artifacts/{Configuration}/package-src/{Platform}/ -->
+      <ClientArtifacts Include="$(ProjectArtifactsDir)\Microsoft.AspNet.SignalR.Client\**\Microsoft.AspNet.SignalR.*.dll;
+                                 $(ProjectArtifactsDir)\Microsoft.AspNet.SignalR.Client\**\Microsoft.AspNet.SignalR.*.pdb;
+                                 $(ProjectArtifactsDir)\Microsoft.AspNet.SignalR.Client\**\Microsoft.AspNet.SignalR.*.xml">
+        <Destination>$(PackageSrcDir)\%(Projects.Platform)</Destination>
+      </ClientArtifacts>
     </ItemGroup>
 
     <Copy SourceFiles="@(Artifacts)" DestinationFiles="@(Artifacts->'%(Destination)\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(ClientArtifacts)" DestinationFiles="@(ClientArtifacts->'%(Destination)\%(Filename)%(Extension)')" />
 
     <!-- Append Package Version to JS file names -->
     <Copy SourceFiles="@(JavaScript)" DestinationFiles="$(PackageSrcDir)\Content\%(VersionedFileName)" />
