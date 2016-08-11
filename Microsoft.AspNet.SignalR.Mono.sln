@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AspNet.SignalR.Core", "src\Microsoft.AspNet.SignalR.Core\Microsoft.AspNet.SignalR.Core.csproj", "{1B9A82C4-BCA1-4834-A33E-226F17BE070B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AspNet.SignalR.Client", "src\Microsoft.AspNet.SignalR.Client\Microsoft.AspNet.SignalR.Client.csproj", "{EB46B9C6-EE37-48F9-835E-E49580E40E0A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AspNet.SignalR.Client40", "src\Microsoft.AspNet.SignalR.Client40\Microsoft.AspNet.SignalR.Client40.csproj", "{EB17BC7D-BCE4-44A8-9A83-07498DE772E0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AspNet.SignalR.Client.JS", "src\Microsoft.AspNet.SignalR.Client.JS\Microsoft.AspNet.SignalR.Client.JS.csproj", "{69771AF9-1BEE-48E6-98BC-78864231E239}"
 EndProject
@@ -55,14 +55,14 @@ Global
 		{69771AF9-1BEE-48E6-98BC-78864231E239}.Release|Any CPU.Build.0 = Release|Any CPU
 		{69771AF9-1BEE-48E6-98BC-78864231E239}.Release|x86.ActiveCfg = Release|Any CPU
 		{69771AF9-1BEE-48E6-98BC-78864231E239}.Release|x86.Build.0 = Release|Any CPU
-		{EB46B9C6-EE37-48F9-835E-E49580E40E0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EB46B9C6-EE37-48F9-835E-E49580E40E0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EB46B9C6-EE37-48F9-835E-E49580E40E0A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{EB46B9C6-EE37-48F9-835E-E49580E40E0A}.Debug|x86.Build.0 = Debug|Any CPU
-		{EB46B9C6-EE37-48F9-835E-E49580E40E0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EB46B9C6-EE37-48F9-835E-E49580E40E0A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EB46B9C6-EE37-48F9-835E-E49580E40E0A}.Release|x86.ActiveCfg = Release|Any CPU
-		{EB46B9C6-EE37-48F9-835E-E49580E40E0A}.Release|x86.Build.0 = Release|Any CPU
+		{EB17BC7D-BCE4-44A8-9A83-07498DE772E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB17BC7D-BCE4-44A8-9A83-07498DE772E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB17BC7D-BCE4-44A8-9A83-07498DE772E0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EB17BC7D-BCE4-44A8-9A83-07498DE772E0}.Debug|x86.Build.0 = Debug|Any CPU
+		{EB17BC7D-BCE4-44A8-9A83-07498DE772E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB17BC7D-BCE4-44A8-9A83-07498DE772E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB17BC7D-BCE4-44A8-9A83-07498DE772E0}.Release|x86.ActiveCfg = Release|Any CPU
+		{EB17BC7D-BCE4-44A8-9A83-07498DE772E0}.Release|x86.Build.0 = Release|Any CPU
 		{FD48578F-E825-47EA-A846-9764E01F523A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FD48578F-E825-47EA-A846-9764E01F523A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD48578F-E825-47EA-A846-9764E01F523A}.Debug|x86.ActiveCfg = Debug|Any CPU
