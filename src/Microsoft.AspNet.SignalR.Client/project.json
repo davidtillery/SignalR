@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "NETStandard.Library": "1.6.0",
+    "Newtonsoft.Json": "9.0.1",
+    "System.Net.Requests": "4.0.11",
+    "System.Net.Http": "4.1.0",
+    "System.Threading.Thread": "4.0.0"
+  },
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": "dnxcore50"
+    }
+  },
+  "buildOptions": {
+    "define": [ "CLIENT", "NETFX_CORE", "NET_STANDARD" ],
+    "outputName": "Microsoft.AspNet.SignalR.Client",
+    "compile": {
+      "includeFiles": [
+        "..\\Common\\GlobalSuppressions.cs",
+        "..\\Common\\CommonVersionInfo.cs",
+        "..\\Common\\CommonAssemblyInfo.cs",
+        "..\\Microsoft.AspNet.SignalR.Core\\Infrastructure\\TaskQueue.cs",
+        "..\\Microsoft.AspNet.SignalR.Core\\Infrastructure\\DisposableAction.cs",
+        "..\\Microsoft.AspNet.SignalR.Core\\Infrastructure\\CancellationTokenExtensions.cs",
+        "..\\Microsoft.AspNet.SignalR.Core\\TaskAsyncHelper.cs"
+      ]
+    },
+    "xmlDoc": true,
+    "nowarn": [ "1591" ]
+  }
+}
